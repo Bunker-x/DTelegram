@@ -18,7 +18,7 @@ To use this library in your Delphi project, follow these steps:
 
 ### Clone or Download the Library Source Code:
 
-1. Clone the library repository or download the source code as a ZIP file from the [GitHub repository](https://github.com/your-username/your-repo-name).
+1. Clone the library repository or download the source code as a ZIP file from the [GitHub repository](https://github.com/aso14/DTelegram.git).
 2. Unzip the files into a directory of your choice.
 
 ### Configure RAD Studio Library Paths:
