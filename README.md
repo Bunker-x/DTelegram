@@ -83,7 +83,7 @@ https://core.telegram.org/bots#how-do-i-create-a-bot
 ### Public Channel ChatId
 For Public channel is super easy to find its ChatId.
 ```html
-   Ex : t.me/abcdefg   ->  ChatId := @abcdefg;
+   Ex : https://t.me/abcdefg   ->  ChatId := @abcdefg;
 ```
 
 ### GetMe
