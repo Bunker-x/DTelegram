@@ -187,9 +187,9 @@ Send a poll.
 ```delphi
 
 var ListAnswers := TStringList.Create;
-ListAnswers.Add('Red');
-ListAnswers.Add('Green');
-ListAnswers.Add('Blue');
+    ListAnswers.Add('Red');
+    ListAnswers.Add('Green');
+    ListAnswers.Add('Blue');
 
 //How use Option Argument 
 var Option := TStringList.Create;
