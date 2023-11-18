@@ -76,10 +76,8 @@ To use this library in your Delphi project, follow these steps:
 
 ### Set up your Bot 
 You need to create a bot before using this component.
-```html
  [How Create your own bot] : (https://core.telegram.org/bots#how-do-i-create-a-bot)
  [Telegram Bot API documentation] : (https://core.telegram.org/bots/api)
-```
 
 ### Public Channel ChatId
 For Public channel is super easy to find its ChatId.
