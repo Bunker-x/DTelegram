@@ -1,6 +1,6 @@
 # Delphi Telegram Bot Library
 
-![Delphi Telegram Bot Library](https://github.com/aso14/DTelegram/blob/master/Assets/Telegram_logo.png)
+![Delphi Telegram Bot Library](https://github.com/aso14/DTelegram/blob/master/Assets/Telegram_logox300.png)
 
 ## Introduction
 This is a Delphi library for interacting with the Telegram Bot API. It provides a set of functions to perform various actions using the Telegram Bot platform.
