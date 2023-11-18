@@ -125,7 +125,12 @@ var CopiedMessageId := TelegramBot.CopyMessage(TargetChatId, SourceChatId, Messa
 ### SendPhoto
 Send a photo.
 ```delphi
-var PhotoMessage := TelegramBot.SendPhoto(ChatId, 'path/to/photo.jpg', 'Check this out!');
+
+// How use AOptions
+ var AOption : TTelegramDic;   // TDictionary<string,string>;
+     AOption := TTelegramDic.Create;
+     AOption.Add('protect_content','1');  // Example 
+ var PhotoMessage := TelegramBot.SendPhoto(ChatId, 'path/to/photo.jpg', 'Check this out!',AOption);
 ```
 
 ### SendAudio
