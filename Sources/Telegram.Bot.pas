@@ -60,6 +60,7 @@ type
 
      constructor Create(AOwner: TComponent); override;
      destructor  Destroy; override;
+
      function GetMe : TTelegramUser;
      function LogOut : Boolean;
      function Close : Boolean;
