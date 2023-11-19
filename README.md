@@ -5,10 +5,10 @@
 ## Introduction
 This is a Delphi Component for interacting with the Telegram Bot API. It provides a set of functions to perform various actions using the Telegram Bot platform.
 
--**Compatibility:** VCL, FMX
--**Tested on Delphi:** 11 Alexandria CE
--**Version:** 1.0.0 
--**Developer:** Silas AÏKO 
+- **Compatibility:** VCL, FMX
+- **Tested on Delphi:** 11 Alexandria CE
+- **Version:** 1.0.0 
+- **Developer:** Silas AÏKO 
 
 ## Getting Started
 To use this component in your Delphi project, follow these steps:
