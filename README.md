@@ -1,24 +1,21 @@
-# Delphi Telegram Bot Library
+# Delphi Telegram Bot Component
 
-![Delphi Telegram Bot Library](https://github.com/aso14/DTelegram/blob/master/Assets/Telegram_logox300.png)
+![Delphi Telegram Bot Component](https://github.com/aso14/DTelegram/blob/master/Assets/Telegram_logox300.png)
 
 ## Introduction
-This is a Delphi library for interacting with the Telegram Bot API. It provides a set of functions to perform various actions using the Telegram Bot platform.
+This is a Delphi Component for interacting with the Telegram Bot API. It provides a set of functions to perform various actions using the Telegram Bot platform.
 
-**Compatibility:** VCL, FMX
-
-**Tested on Delphi:** 11 Alexandria CE
-
-**Version:** 1.0.0 
-
-**Developer:** Silas AÏKO 
+- **Compatibility:** VCL, FMX
+- **Tested on Delphi:** 11 Alexandria CE
+- **Version:** 1.0.0 
+- **Developer:** Silas AÏKO 
 
 ## Getting Started
-To use this library in your Delphi project, follow these steps:
+To use this component in your Delphi project, follow these steps:
 
 ### Clone or Download the Library Source Code:
 
-1. Clone the library repository or download the source code as a ZIP file from the [GitHub repository](https://github.com/aso14/DTelegram.git).
+1. Clone the component repository or download the source code as a ZIP file from the [GitHub repository](https://github.com/aso14/DTelegram.git).
 2. Unzip the files into a directory of your choice.
 
 ### Configure RAD Studio Library Paths:
@@ -28,7 +25,7 @@ To use this library in your Delphi project, follow these steps:
 
 ### Compile and Install the Package:
 
-1. Open the `DTelegram.dproj` file located in the "Package" folder of the library source code.
+1. Open the `DTelegram.dproj` file located in the "Package" folder of the component source code.
 2. Compile and install the package `DTelegram.bpl`. This step may involve right-clicking on the project file and selecting "Compile" and then "Install."
 
 ## Available Functions
@@ -75,15 +72,14 @@ To use this library in your Delphi project, follow these steps:
 ## Examples for Available Functions
 
 ### Set up your Bot 
-You need to create a bot before use this component.
-```html
-https://core.telegram.org/bots#how-do-i-create-a-bot
-```
+You need to create a bot before using this component.
+- How Create your own bot : https://core.telegram.org/bots#how-do-i-create-a-bot
+- Telegram Bot API documentation : https://core.telegram.org/bots/api
 
 ### Public Channel ChatId
 For Public channel is super easy to find its ChatId.
 ```html
-   Ex : t.me/abcdefg   ->  ChatId := @abcdefg;
+   Ex : https://t.me/abcdefg   ->  ChatId := @abcdefg;
 ```
 
 ### GetMe
@@ -125,7 +121,12 @@ var CopiedMessageId := TelegramBot.CopyMessage(TargetChatId, SourceChatId, Messa
 ### SendPhoto
 Send a photo.
 ```delphi
-var PhotoMessage := TelegramBot.SendPhoto(ChatId, 'path/to/photo.jpg', 'Check this out!');
+
+// How use AOptions
+ var AOption : TTelegramDic;   // TDictionary<string,string>;
+     AOption := TTelegramDic.Create;
+     AOption.Add('protect_content','1');  // Example 
+ var PhotoMessage := TelegramBot.SendPhoto(ChatId, 'path/to/photo.jpg', 'Check this out!',AOption);
 ```
 
 ### SendAudio
@@ -187,9 +188,9 @@ Send a poll.
 ```delphi
 
 var ListAnswers := TStringList.Create;
-ListAnswers.Add('Red');
-ListAnswers.Add('Green');
-ListAnswers.Add('Blue');
+    ListAnswers.Add('Red');
+    ListAnswers.Add('Green');
+    ListAnswers.Add('Blue');
 
 //How use Option Argument 
 var Option := TStringList.Create;
