@@ -1,9 +1,9 @@
 # Delphi Telegram Bot Component v1.1.0
 
-**Changelog:**
-- Added Inline Keyboards
-
 ![Delphi Telegram Bot Component](https://github.com/aso14/DTelegram/blob/master/Assets/Telegram_logox300.png)
+
+## Changelog:
+- Added Inline Keyboards
 
 ## Introduction
 This is a Delphi Component for interacting with the Telegram Bot API. It provides a set of functions to perform various actions using the Telegram Bot platform.
