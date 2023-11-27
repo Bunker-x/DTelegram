@@ -1,4 +1,7 @@
-# Delphi Telegram Bot Component
+# Delphi Telegram Bot Component v1.1.0
+
+**Changelog:**
+- Added Inline Keyboards
 
 ![Delphi Telegram Bot Component](https://github.com/aso14/DTelegram/blob/master/Assets/Telegram_logox300.png)
 
@@ -7,7 +10,7 @@ This is a Delphi Component for interacting with the Telegram Bot API. It provide
 
 - **Compatibility:** VCL, FMX
 - **Tested on Delphi:** 11 Alexandria CE
-- **Version:** 1.0.0 
+- **Version:** 1.1.0 
 - **Developer:** Silas AÏKO 
 
 ## Getting Started
@@ -68,6 +71,7 @@ To use this component in your Delphi project, follow these steps:
 | **GetMyName**               | Get the bot's name.                                 | `BotName := TelegramBot.GetMyName();`
 | **SetMyDescription**        | Set the bot's description.                          | `DescriptionSet := TelegramBot.SetMyDescription('New Bot Description');`
 | **GetMyDescription**        | Get the bot's description.                          | `BotDescription := TelegramBot.GetMyDescription();`
+| **GenInlineKeyBoard**        | A reply keyboards                         | `Response := TelegramBot.GenInlineKeyBoard(AButtonList,NumberOfButtonPerRow);`
 
 ## Examples for Available Functions
 
@@ -316,6 +320,52 @@ var DescriptionSet := TelegramBot.SetMyDescription('New Bot Description');
 Get the bot's description.
 ```delphi
 var BotDescription := TelegramBot.GetMyDescription();
+```
+
+### InlineKeyboards
+
+Enable Inline Keyboards for interactive actions. Inline keyboards support buttons that can work behind the scenes or open different interfaces, including URL buttons.
+
+Using **TEmojiConstants** need a third part unit https://github.com/aso14/Delphi-Unicode-Emoji
+
+```delphi
+// Example usage of Inline Keyboards
+var
+ LButtonList : TList <TTelegramInlineKeyBoardButton>;
+begin
+
+  LButtonList := TList<TTelegramInlineKeyBoardButton>.Create;
+
+  // Create Button without Emoji
+  var LButton1  := TTelegramInlineKeyBoardButton.Create;
+      LButton1.text := 'Delphi Telegram';
+      LButton1.url  := 'https://github.com/aso14/DTelegram';
+
+  // Create Button with Emoji
+
+  var LButton2      := TTelegramInlineKeyBoardButton.Create;
+      LButton2.text := 'Delphi UI ' + TEmojiConstants.UpsideDownFace;
+      LButton2.url  := 'https://t.me/delphui';
+
+  var LButton3      := TTelegramInlineKeyBoardButton.Create;
+      LButton3.text := 'Youtube '+TEmojiConstants.WinkingFace;
+      LButton3.url  := 'https://www.youtube.com/@uidelphi';
+
+
+  LButtonList.Add(LButton1);
+  LButtonList.Add(LButton2);
+  LButtonList.Add(LButton3);
+
+  // If ALimitValue = 3, the maximun number of Button per row will be 3
+
+  var Response := TelegramBot1.GenInlineKeyBoard(LButtonList,3);
+
+  var Option := TStringList.Create;
+      Option.Add('reply_markup='+Response);
+
+  TelegramBot1.SendMessage('@helpo229','Text',Option);
+
+end;
 ```
 
 
