@@ -21,8 +21,11 @@
 unit Telegram.Api.Types;
 
 interface
+uses
+  System.Generics.Collections;
 
-type
+
+  type
 
   TTelegramChatPhoto = class;
   TTelegramMessage = class;
@@ -828,7 +831,7 @@ type
   private
     Finline_keyboard: TArray<TArray<TTelegramInlineKeyboardButton>>;
   public
-    property inline_keyboard: TArray < TArray < TTelegramInlineKeyboardButton >>
+    property inline_keyboard: TArray <TArray<TTelegramInlineKeyboardButton>>
       read Finline_keyboard write Finline_keyboard;
   end;
 
@@ -849,15 +852,9 @@ type
     property callback_data: string read Fcallback_data write Fcallback_data;
     property web_app: TTelegramWebAppInfo read Fweb_app write Fweb_app;
     property login_url: TTelegramLoginUrl read Flogin_url write Flogin_url;
-    property switch_inline_query: string read Fswitch_inline_query
-      write Fswitch_inline_query;
-    property switch_inline_query_current_chat: string
-      read Fswitch_inline_query_current_chat
-      write Fswitch_inline_query_current_chat;
-    property switch_inline_query_chosen_chat
-      : TTelegramSwitchInlineQueryChosenChat
-      read Fswitch_inline_query_chosen_chat
-      write Fswitch_inline_query_chosen_chat;
+    property switch_inline_query: string read Fswitch_inline_query write Fswitch_inline_query;
+    property switch_inline_query_current_chat: string read Fswitch_inline_query_current_chat write Fswitch_inline_query_current_chat;
+    property switch_inline_query_chosen_chat: TTelegramSwitchInlineQueryChosenChat read Fswitch_inline_query_chosen_chat write Fswitch_inline_query_chosen_chat;
     property pay: Boolean read Fpay write Fpay;
   end;
 
@@ -871,8 +868,7 @@ type
     property url: string read Furl write Furl;
     property forward_text: string read Fforward_text write Fforward_text;
     property bot_username: string read Fbot_username write Fbot_username;
-    property request_write_access: Boolean read Frequest_write_access
-      write Frequest_write_access;
+    property request_write_access: Boolean read Frequest_write_access write Frequest_write_access;
   end;
 
   TTelegramSwitchInlineQueryChosenChat = class
@@ -1639,8 +1635,13 @@ type
       property result         : TArray<TTelegramUpdate>   read Fresult        write   Fresult;
   end;
 
+ TArrayInKeyboards = TArray<TArray<TTelegramInlineKeyBoardButton>>;
+
 
 implementation
+
+
+{ TTelegramInlineKeyboardMarkup }
 
 
 end.

@@ -56,6 +56,7 @@ type
      function CommonDefRequest  <T:class,constructor>(AEndPoint: String):T;
      function CommonRequest     <T:class,constructor>(AEndPoint: String; AParams : TStringList; AOptions: TStringList=nil):T;
      function CommonRequestFile <T:class,constructor>(AEndPoint: String; AParams : TMultipartFormData; AOptions: TTelegramDic):T;
+     procedure SplitArray(inputArray: TArray<TTelegramInlineKeyBoardButton>; var outputArray: TArrayInKeyboards; ALimit:Integer);
   public
 
      constructor Create(AOwner: TComponent); override;
@@ -115,6 +116,8 @@ type
 
      function SetMyDescription(ADescription: String = '';AlanguageCode: String = ''): Boolean;
      function GetMyDescription(AlanguageCode: String = ''): TTelegramBotDescription;
+
+     function GenInlineKeyBoard(AButtons:TList<TTelegramInlineKeyBoardButton>; AlimitValue:Integer=3) : String;
 
   published
     property BotKey : String  read FBotToken   write SetBotToken;
@@ -338,6 +341,29 @@ begin
    finally
     LParams.DisposeOf;
    end;
+end;
+
+function TTelegramBot.GenInlineKeyBoard(
+  AButtons: TList<TTelegramInlineKeyBoardButton>; AlimitValue: Integer): String;
+var
+  LButtonArray : TArray<TTelegramInlineKeyBoardButton>;
+  LlineKeyBoard: TTelegramInlineKeyBoardMarkup;
+  LTemp        : TArray<TArray<TTelegramInlineKeyboardButton>>;
+  I,J,K        : Integer;
+begin
+
+  if (AButtons = nil) or (AButtons.Count = 0) then Exit;
+
+  SetLength(LButtonArray, AButtons.Count);
+  for I := 0 to AButtons.Count - 1 do LButtonArray[I] := AButtons.Items[I];
+  LlineKeyBoard := TTelegramInlineKeyBoardMarkup.Create;
+
+  SplitArray(LButtonArray,LTemp,AlimitValue);
+
+  LlineKeyBoard.inline_keyboard := LTemp;
+
+  Result := TJSON.ObjectToJsonString(LlineKeyBoard,[joIgnoreEmptyArrays,joIgnoreEmptyStrings]);
+
 end;
 
 function TTelegramBot.GetChat(AChatId: String): TTelegramChat;
@@ -831,6 +857,40 @@ begin
    end;
 end;
 
+
+procedure TTelegramBot.SplitArray(
+  inputArray: TArray<TTelegramInlineKeyBoardButton>;
+  var outputArray: TArrayInKeyboards; ALimit: Integer);
+var
+  i, j: Integer;
+  currentRow: TArray<TTelegramInlineKeyBoardButton>;
+begin
+  // Initialize the output array
+  SetLength(outputArray, 0);
+
+  // Iterate through the input array
+  for i := 0 to Length(inputArray) - 1 do
+  begin
+    // If the current row is full, start a new row
+    if Length(currentRow) = ALimit then
+    begin
+      SetLength(outputArray, Length(outputArray) + 1);
+      outputArray[High(outputArray)] := currentRow;
+      SetLength(currentRow, 0);
+    end;
+
+    // Add the current element to the current row
+    SetLength(currentRow, Length(currentRow) + 1);
+    currentRow[High(currentRow)] := inputArray[i];
+  end;
+
+  // Add the last row if it is not empty
+  if Length(currentRow) > 0 then
+  begin
+    SetLength(outputArray, Length(outputArray) + 1);
+    outputArray[High(outputArray)] := currentRow;
+  end;
+end;
 
 function TTelegramBot.UnBanChatMember(AChatId: String; AUserId: Integer;
   AOptions: TStringList): Boolean;
