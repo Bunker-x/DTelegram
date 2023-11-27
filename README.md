@@ -358,12 +358,12 @@ begin
 
   // If ALimitValue = 3, the maximun number of Button per row will be 3
 
-  var Response := TelegramBot1.GenInlineKeyBoard(LButtonList,3);
+  var Response := TelegramBot.GenInlineKeyBoard(LButtonList,3);
 
   var Option := TStringList.Create;
       Option.Add('reply_markup='+Response);
 
-  TelegramBot1.SendMessage('@helpo229','Text',Option);
+  TelegramBot.SendMessage('@chatId','Text',Option);
 
 end;
 ```
