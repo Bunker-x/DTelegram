@@ -326,6 +326,7 @@ var BotDescription := TelegramBot.GetMyDescription();
 
 Enable Inline Keyboards for interactive actions. Inline keyboards support buttons that can work behind the scenes or open different interfaces, including URL buttons.
 - Add this Unit **Telegram.Api.Types**;
+- Add this Unit **System.Generics.Collections**;
 
 Using **TEmojiConstants** need a third part unit https://github.com/aso14/Delphi-Unicode-Emoji
 
