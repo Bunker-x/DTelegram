@@ -235,7 +235,7 @@ begin
   end;
 end;
 
-function TTelegramBot.CommonRequestFile<T>(AEndPoint: String; AParams : TMultipartFormData;
+function TTelegramBot.CommonRequestFile<T>(AEndPoint: String; AParams :TMultipartFormData;
   AOptions: TTelegramDic): T;
 begin
   try
@@ -725,7 +725,7 @@ end;
 function TTelegramBot.SendVideo(AChatId, AVideo: String;
   AOptions: TTelegramDic): TTelegramMessage;
 const
-  _ENDPOINT = 'sendDocument';
+  _ENDPOINT = 'sendVideo';
 var
  LParam : TMultipartFormData;
  Pair : TPair <string,string>;

@@ -131,5 +131,5 @@ end;
 
 initialization
   ClientBase := TNetHTTPClient.Create(nil);
-  ClientBase.ContentType := 'x-www-form-urlencoded';
+  ClientBase.ContentType  := 'x-www-form-urlencoded';
 end.
