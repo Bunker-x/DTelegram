@@ -63,6 +63,7 @@ uses
   TTelegramKeyboardButton = class;
   TTelegramLoginUrl = class;
   TTelegramSwitchInlineQueryChosenChat = class;
+  TTelegramOrigin = class;
 
   TTelegramKeyboardButtonRequestUser = class;
   TTelegramKeyboardButtonRequestChat = class;
@@ -185,6 +186,7 @@ uses
     Fsender_chat: TTelegramChat;
     Fchat: TTelegramChat;
     Fdate: Integer;
+    Fforward_origin:TTelegramOrigin;
     Fforward_from: TTelegramUser;
     Fforward_from_chat: TTelegramChat;
     Fforward_from_message_id: Integer;
@@ -251,6 +253,7 @@ uses
     property sender_chat: TTelegramChat read Fsender_chat write Fsender_chat;
     property date: Integer read Fdate write Fdate;
     property chat: TTelegramChat read Fchat write Fchat;
+    property forward_origin: TTelegramOrigin read Fforward_origin write Fforward_origin; //новое
     property forward_from: TTelegramUser read Fforward_from write Fforward_from;
     property forward_from_chat: TTelegramChat read Fforward_from_chat write Fforward_from_chat;
     property forward_from_message_id: Integer read Fforward_from_message_id write Fforward_from_message_id;
@@ -338,6 +341,19 @@ uses
     property custom_emoji_id: String read Fcustom_emoji_id
       write Fcustom_emoji_id;
   end;
+
+    TTelegramOrigin = class
+  private
+    Ftype: String;
+    Fdate: Integer;
+    Fsender_user: TTelegramUser;
+  public
+    property &type: String read Ftype write Ftype;
+    property date: Integer read Fdate write Fdate;
+    property sender_user: TTelegramUser read Fsender_user write Fsender_user;
+  end;
+
+
 
   TTelegramPhotoSize = class
   private
@@ -1645,3 +1661,5 @@ implementation
 
 
 end.
+
+
